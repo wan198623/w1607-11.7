@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>苹果官网</title>
+	<link rel="stylesheet" href="css/less.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="jquery-3.1.0.js"></script>
+</head>
+<body>
+	<div class="adv-wapper">
+		<div class="adv-wrapper-text"><广告></div>
+	</div>
+	<div class="ac-globalnav">
+		<div class="ac-gn-content">
+			<ul class="ac-gn-list">
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-apple"><span></span></a>
+				</li>
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-mac">
+						<span>Mac</span>
+					</a>
+				</li>
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-ipad"><span>ipad</span></a>
+				</li>
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-iphone"><span>iPhone</span></a>
+				</li>
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-Watch"><span>Watch</span></a>
+				</li>
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-Music">
+						<span>Music</span>
+					</a>
+				</li>
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-support">
+						<span>技术支持</span>
+					</a>
+				</li>
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-search">
+						<span></span>
+					</a>
+				</li>
+				<li class="ac-gn-item">
+					<a href="" class="ac-gn-link ac-gn-link-bag">
+						<span></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="banner">
+		<ul>
+			<li class="content content1">
+		     	<h1 style="font-size:30px;">Apple 特别活动</h1>	 <h2>&nbsp&nbsp&nbsp观看主题演讲。</h2>		
+			</li>
+			<li class="content content2">
+		     	<h1 style="font-size:30px;">MacBook Pro</h1>	 <h2>&nbsp&nbsp&nbsp一身才华，一触，即发。</h2>		
+			</li>
+			<li class="content content3">
+		     	<h1 style="font-size:30px;">ipone</h1>	 <h2>&nbsp&nbsp7,在此</h2>		
+			</li>
+		</ul>
+		<div class="nav">
+			<ul class="tablist">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="links">
+			<ul >
+				<li class="link link_left">&lt</li>
+				<li class="link link_right">&gt</li>
+			</ul>
+		</div>
+	</div>
+	<div class="promots container-fluid">
+		<ul class="row">
+			<li class="i_watch col-l-3 col-m-6 col-s-12"></li>
+			<li  class="i_airpods col-l-3 col-m-6 col-s-12"></li>
+			<li  class="i_upgrade col-l-3 col-m-6 col-s-12"></li>
+			<li  class="i_accessibility col-l-3 col-m-6 col-s-12"></li>
+		</ul>
+	</div>
+</body>
+<script>
+ $(function(){	      
+  		$(".banner .content").hide().eq(0).show();
+	  	$(".banner>.links").hide();
+	  	var num=0;
+	  	function move(type){
+	     type=type||"right";
+	     if(type=="right"){
+	     	  num++;
+	      if(num>=$(".banner .content").length){
+	      	  num=0;
+	      }
+	        }
+	      if(type=="left"){
+	      	num--;
+	      	 if(num<=-1){
+	      	  num=$(".banner .content").length-1;}
+	      }
+	     $(".banner .content").fadeOut().eq(num).fadeIn();
+	     $(".tablist>li").removeClass("active").eq(num).addClass("active");
+	  	}
+	  	var t=setInterval(move,2000)
+	    $(".banner").mouseover(function(){
+	        clearInterval(t);
+	        $(".banner>.links").show();
+
+	    })
+	    $(".banner").mouseout(function(){
+	        t=setInterval(move,2000)
+	        $(".banner>.links").hide();       
+	    })
+	    $(".link_right").click(function(){
+	  		move()
+	  	})
+	  	 $(".link_left").click(function(){
+	  		move("left")
+	  	})
+
+	  	$(".tablist>li").click(function(){
+	  		$(".banner .content").stop(true,true);
+	       var index=$(this).index();
+	    $(".banner .content").fadeOut().eq(index).fadeIn(); 
+	    $(".banner .content").removeClass("active").eq(index).addClass("active");
+	     num=index;
+
+	        })
+  // ***************************  
+  })
+  </script>
+</html>
